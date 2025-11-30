@@ -12,45 +12,43 @@
 
 #include "get_next_line.h"
 
+char	*ft_read(int fd, char *s)
+{
+	char	*buf;
+	char	*tmp;
+	ssize_t	b;
+
+	buf = malloc(BUFFER_SIZE + 1);
+	if (!buf)
+		return (NULL);
+	b = 1;
+	while (b > 0 && !ft_strchr(s, '\n'))
+	{
+		b = read(fd, buf, BUFFER_SIZE);
+		if (b < 0)
+			return (free(buf), free(s), NULL);
+		buf[b] = '\0';
+		tmp = s;
+		s = ft_join(tmp, buf);
+		free(tmp);
+	}
+	return (free(buf), s);
+}
+
 char	*get_next_line(int fd)
 {
 	static char	*storage;
-	char	*line;
-	char	*left;
-	char	*hold;
-	size_t	len;
+	char		*line;
+	char		*tmp;
 
+	if (fd < 0 || fd > 1024 || BUFFER_SIZE <= 0)
+		return (NULL);
 	storage = ft_read(fd, storage);
 	if (!storage || !storage[0])
-		return (NULL);
+		return (free(storage), storage = NULL, NULL);
 	line = ft_line(storage);
-	left = ft_left(storage);
-	hold = NULL;
-	if (left && left[0])
-	{
-		len = ft_len(left); 
-		hold = (char *)malloc(len + 1);
-		if (!hold)
-		{
-			free(line);
-			free(storage);
-			storage = NULL;
-			return (NULL);
-		}
-		ft_copy(hold, left, len + 1);
-	}
+	tmp = ft_left(storage);
 	free(storage);
-	storage = hold;
+	storage = tmp;
 	return (line);
-}	
-
-int	main(void)
-{
-	printf("%s", get_next_line(0));
-	printf("%s", get_next_line(0));
-	printf("%s", get_next_line(0));
-	printf("%s", get_next_line(0));
-	printf("%s", get_next_line(0));
-	printf("%s", get_next_line(0));
-	return (0);
 }
