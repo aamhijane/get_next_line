@@ -20,5 +20,11 @@
 # define BUFFER_SIZE 5
 # endif
 
-void	get_next_line(int fd);
+size_t	ft_len(const char *str);
+size_t	ft_copy(char *dst, char *src, size_t size);
+char	*ft_join(char *str1, char *str2);
+char	*ft_read(int fd, char *storage);
+int	ft_is_newline(char *storage);
+char	*ft_line(char *data);
+char	*ft_left(char *data);
 #endif
