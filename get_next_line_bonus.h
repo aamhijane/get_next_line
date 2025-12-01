@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayamhija <ayamhija@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/28 15:15:51 by ayamhija          #+#    #+#             */
-/*   Updated: 2025/11/28 15:17:12 by ayamhija         ###   ########.fr       */
+/*   Created: 2025/12/01 17:47:51 by ayamhija          #+#    #+#             */
+/*   Updated: 2025/12/01 17:48:02 by ayamhija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
 # include <unistd.h>
 # include <stdlib.h>
+
+# define FD_MAX 1024
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42
