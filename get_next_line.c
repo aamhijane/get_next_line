@@ -41,7 +41,7 @@ char	*get_next_line(int fd)
 	char		*line;
 	char		*tmp;
 
-	if (fd < 0 || fd > 1024 || BUFFER_SIZE <= 0)
+	if (fd < 0 || fd > FD_MAX || BUFFER_SIZE <= 0)
 		return (NULL);
 	storage = ft_read(fd, storage);
 	if (!storage || !storage[0])

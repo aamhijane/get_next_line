@@ -91,6 +91,8 @@ char	*ft_left(char *s)
 	size_t	i;
 	size_t	j;
 
+	if (!s)
+		return (NULL);
 	i = 0;
 	while (s[i] && s[i] != '\n')
 		i++;
